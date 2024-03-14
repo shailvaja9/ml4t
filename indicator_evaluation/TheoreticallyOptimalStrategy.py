@@ -29,23 +29,6 @@ class TheoreticallyOptimalStrategy:
 			df_trades.iloc[i,0] = action
 			current_position += action
 
-		"""
-		for i in range(0, len(price_symbol) - 1):
-			if price_symbol.iloc[i+1, 0] > price_symbol.iloc[i, 0]:  # If price will go up, buy
-				#df_trades.iloc[i, 0] = 1000 - df_trades.iloc[i - 1, 0]
-				if current_position != 1000:
-					df_trades.iloc[i,0] = 1000 - current_position
-					current_position = 1000
-				else:
-					df_trades.iloc[i, 0] = 0
-			elif price_symbol.iloc[i + 1,0] < price_symbol.iloc[i, 0]:  # If price will go down, sell
-				#df_trades.iloc[i, 0] = -1000 - df_trades.iloc[i - 1, 0]
-				if current_position != -1000:
-					df_trades.iloc[i,0] = -1000 - current_position
-					current_position = -1000
-				else:
-					df_trades.iloc[i,0] = 0
-		"""
 		portvals = compute_portvals(df_trades, sv, 0.0, 0.0)
 		cum_ret, avg_daily_ret, std_daily_ret, sharpe_ratio = return_portvals(portvals)
 		print(cum_ret, avg_daily_ret, std_daily_ret, sharpe_ratio)
